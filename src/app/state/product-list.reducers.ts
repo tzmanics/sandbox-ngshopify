@@ -7,5 +7,5 @@ export const initialState: ReadonlyArray<Product> = [];
 
 export const productListReducer = createReducer(
   initialState,
-  on(loadProductList, (state, { Product }) => [...Product])
+  on(loadProductList, (state) => ({ ...state, productList: [1, 2, 4] }))
 );
