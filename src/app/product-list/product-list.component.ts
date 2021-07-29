@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Product } from '../models/Product';
+import { ProductListService } from '../services/product-list.service';
+import { loadProductList } from '../state/product-list.actions';
 
 @Component({
   selector: 'app-product-list',
@@ -17,6 +19,6 @@ export class ProductListComponent implements OnInit {
   constructor(private store: Store<{ productList: Product[] }>) {}
 
   ngOnInit(): void {
-    this.store.dispatch({ type: '[Product List Page] Load Product List' });
+    this.store.dispatch(loadProductList());
   }
 }

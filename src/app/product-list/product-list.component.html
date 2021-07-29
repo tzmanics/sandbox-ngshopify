@@ -1,4 +1,6 @@
 <h1>Product List</h1>
-<div *ngFor="let product of productList$ | async">
-  {{ product | json }}
+<div *ngIf="productList$ | async as productList">
+  <div *ngFor="let product of productList">
+    {{ product | json }}
+  </div>
 </div>
