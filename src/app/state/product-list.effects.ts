@@ -12,10 +12,12 @@ export class ProductListEffects {
       ofType('[Product List Page] Load Product List'),
       mergeMap(() =>
         this.productListService.getProductList().pipe(
-          map((productList) => ({
-            type: '[Product List Page] Product List Loaded',
-            payload: productList,
-          })),
+          map((productList) => {
+            return {
+              type: '[Product List Page | API] Load Product List Success',
+              productList: productList,
+            };
+          }),
           catchError(() => EMPTY)
         )
       )

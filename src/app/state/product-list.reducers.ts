@@ -1,11 +1,10 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 
-import { loadProductList } from './product-list.actions';
-import { Product } from '../models/Product';
+import { loadProductListSuccess } from './product-list.actions';
 
-export const initialState: ReadonlyArray<Product> = [];
+export const initialState: any[] = [1, 2, 3];
 
 export const productListReducer = createReducer(
   initialState,
-  on(loadProductList, (state) => ({ ...state, productList: [1, 2, 4] }))
+  on(loadProductListSuccess, (_, action) => action.productList)
 );
