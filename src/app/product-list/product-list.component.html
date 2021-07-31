@@ -1,6 +1,13 @@
-<h1>Product List</h1>
-<div *ngIf="productList$ | async as productList">
-  <div *ngFor="let product of productList">
-    {{ product | json }}
+<div class="home-page">
+  <div
+    class="product-grid"
+    *ngIf="productList$ | async as productList; else loadingBlock"
+  >
+    <div class="product-card" *ngFor="let product of productList">
+      [product]="product" routerLink="/product//{{ product.handle }}"
+    </div>
   </div>
+  <ng-template #loadingBlock>
+    <p>Loading products...</p>
+  </ng-template>
 </div>
