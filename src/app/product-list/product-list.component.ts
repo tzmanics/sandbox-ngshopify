@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Product } from '../models/Product';
-import { ProductListService } from '../services/product-list.service';
 import { loadProductList } from '../state/product-list.actions';
 
 @Component({
