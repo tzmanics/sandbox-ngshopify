@@ -11,9 +11,11 @@ import { productListReducer } from './state/product-list.reducers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
+import { FooterComponent } from './footer/footer.component';
+import { FooterLinksComponent } from './footer-links/footer-links.component';
 
 @NgModule({
-  declarations: [AppComponent, MainNavComponent],
+  declarations: [AppComponent, MainNavComponent, FooterComponent, FooterLinksComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
