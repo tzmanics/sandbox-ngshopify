@@ -10,9 +10,10 @@ import { productListReducer } from './state/product-list.reducers';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MainNavComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
