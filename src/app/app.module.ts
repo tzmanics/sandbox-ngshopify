@@ -4,6 +4,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FormsModule } from '@angular/forms';
 
 import { ProductListEffects } from './state/product-list.effects';
 import { productListReducer } from './state/product-list.reducers';
@@ -13,13 +14,21 @@ import { AppComponent } from './app.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { FooterLinksComponent } from './footer-links/footer-links.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, MainNavComponent, FooterComponent, FooterLinksComponent],
+  declarations: [
+    AppComponent,
+    MainNavComponent,
+    FooterComponent,
+    FooterLinksComponent,
+    ProductDetailComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     EffectsModule.forRoot([ProductListEffects]),
     StoreModule.forRoot({ productList: productListReducer }),
     StoreDevtoolsModule.instrument({
