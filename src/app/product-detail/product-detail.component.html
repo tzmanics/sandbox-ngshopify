@@ -9,7 +9,10 @@
         {{ product?.description }}
       </p>
       <form>
-        <div class="product-page-price-list">
+        <div
+          class="product-page-price-list"
+          *ngIf="(product?.variants?.edges)!.length > 1; else isSolo"
+        >
           <div
             *ngFor="let variant of product?.variants?.edges"
             class="product-page-price"
