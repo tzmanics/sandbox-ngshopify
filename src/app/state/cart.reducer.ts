@@ -1,22 +1,10 @@
-import { Action, createReducer, on } from '@ngrx/store';
-import * as CartActions from './cart.actions';
+import { createReducer, on } from '@ngrx/store';
 
-export interface State {
-  cart: any[];
-}
+import { addProductSuccess } from './cart.actions';
 
-export const initialState: State = {
-  cart: [],
-};
+export const initialState: any[] = [1, 2, 3];
 
-const cartReducer = createReducer(
+export const cartReducer = createReducer(
   initialState,
-  on(CartActions.addProduct, (state) => ({
-    ...state,
-    cart: [1, 2, 3],
-  }))
+  on(addProductSuccess, (_, action) => action.cart)
 );
-
-export function reducer(state: State | undefined, action: Action) {
-  return cartReducer(state, action);
-}
