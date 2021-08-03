@@ -44,6 +44,7 @@
           <input
             type="number"
             name="quantity"
+            [(ngModel)]="selectedQuantity"
             value="1"
             class="product-page-quantity-input"
           />
@@ -52,7 +53,7 @@
             (click)="
               addToCart({
                 itemId: selectedProductId,
-                quantity: 1
+                quantity: selectedQuantity
               })
             "
           >

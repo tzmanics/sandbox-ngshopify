@@ -1,10 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 
 import { Product } from '../models/Product';
-import { loadProductList } from '../state/product-list.actions';
 import { ProductListService } from '../services/product-list.service';
 
 @Component({
@@ -15,6 +12,7 @@ import { ProductListService } from '../services/product-list.service';
 export class ProductDetailComponent implements OnInit {
   product!: Product;
   selectedProductId!: string;
+  selectedQuantity: number = 1;
 
   constructor(
     private route: ActivatedRoute,
