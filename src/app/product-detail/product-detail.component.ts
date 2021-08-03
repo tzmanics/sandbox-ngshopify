@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { Product } from '../models/Product';
+import { loadProductList } from '../state/product-list.actions';
 import { ProductListService } from '../services/product-list.service';
 
 @Component({
@@ -10,12 +13,12 @@ import { ProductListService } from '../services/product-list.service';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
+  product!: Product;
   selectedProductId!: string;
-  @Input() product?: Product;
 
   constructor(
     private route: ActivatedRoute,
-    private productListService: ProductListService
+    private productsService: ProductListService
   ) {}
 
   ngOnInit(): void {
@@ -24,9 +27,10 @@ export class ProductDetailComponent implements OnInit {
 
   getProduct(): void {
     const handle = this.route.snapshot.paramMap.get('handle') || '';
-    this.productListService
-      .getProduct(handle)
-      .subscribe((product) => (this.product = product));
+    this.productsService.getProduct(handle).subscribe((product) => {
+      this.product = product;
+      this.selectedProductId = this.product.variants.edges[0].node.id;
+    });
   }
 
   addToCart(productInfo: any) {
