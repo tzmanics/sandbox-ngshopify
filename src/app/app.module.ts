@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 
 import { ProductListEffects } from './state/product-list.effects';
 import { productListReducer } from './state/product-list.reducers';
+import { CartEffects } from './state/cart.effects';
+import { cartReducer } from './state/cart.reducers';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,8 +31,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    EffectsModule.forRoot([ProductListEffects]),
-    StoreModule.forRoot({ productList: productListReducer }),
+    EffectsModule.forRoot([ProductListEffects, CartEffects]),
+    StoreModule.forRoot({ productList: productListReducer, cart: cartReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       autoPause: true,

@@ -6,12 +6,12 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 import { CartService } from '../services/cart.service';
 
 @Injectable()
-export class CartEffect {
+export class CartEffects {
   addProduct$ = createEffect(() =>
     this.actions$.pipe(
       ofType('[Product Detail Page] Add product'),
-      mergeMap(() =>
-        this.cartService.addToCart(productInfo).pipe(
+      mergeMap((action) =>
+        this.cartService.addToCart(action).pipe(
           map((cart) => {
             return {
               type: '[Product Detail Page] Add product success',
