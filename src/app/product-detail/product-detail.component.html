@@ -11,12 +11,9 @@
       <form>
         <div
           class="product-page-price-list"
-          *ngIf="(product?.variants?.edges)!.length > 1; else isSolo"
+          *ngIf="variants && variants.length > 1; else isSolo"
         >
-          <div
-            *ngFor="let variant of product?.variants?.edges"
-            class="product-page-price"
-          >
+          <div *ngFor="let variant of variants" class="product-page-price">
             <input
               [id]="variant.node.id"
               type="radio"
@@ -33,10 +30,10 @@
         </div>
         <ng-template #isSolo>
           <div class="product-page-price is-solo">
-            {{ (product?.variants?.edges)![0].node.priceV2.amount | currency }}
+            {{ variants![0].node.priceV2.amount | currency }}
             <span v-else-if="productVariants[0].node.quantityAvailable > 0">
               (Only
-              {{ (product?.variants?.edges)![0].node.quantityAvailable }} left)
+              {{ variants![0].node.quantityAvailable }} left)
             </span>
           </div>
         </ng-template>

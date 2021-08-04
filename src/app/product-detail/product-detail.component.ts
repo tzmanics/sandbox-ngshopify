@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Product } from '../models/Product';
 import { ProductListService } from '../services/product-list.service';
 import { addProduct } from '../state/cart.actions';
+import { productListReducer } from '../state/product-list.reducers';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,6 +16,7 @@ export class ProductDetailComponent implements OnInit {
   product!: Product;
   selectedProductId!: string;
   selectedQuantity: number = 1;
+  variants: any[] = [{ node: { priceV2: { amount: 1 } } }];
 
   constructor(
     private route: ActivatedRoute,
@@ -31,10 +33,11 @@ export class ProductDetailComponent implements OnInit {
     this.productsService.getProduct(handle).subscribe((product) => {
       this.product = product;
       this.selectedProductId = this.product.variants.edges[0].node.id;
+      this.variants = product.variants.edges;
     });
   }
 
   addToCart(productInfo: any) {
-    this.store.dispatch(addProduct({ productInfo: productInfo }));
+    this.store.dispatch(addProduct(productInfo));
   }
 }
