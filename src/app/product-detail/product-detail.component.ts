@@ -38,6 +38,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToCart(productInfo: any) {
+    productInfo.cartId = window.localStorage.getItem('ngShopifyCartId') || '';
     this.store.dispatch(addProduct(productInfo));
   }
 }
