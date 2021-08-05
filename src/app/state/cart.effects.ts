@@ -13,6 +13,7 @@ export class CartEffects {
       mergeMap((action) =>
         this.cartService.addToCart(action).pipe(
           map((cart) => {
+            window.localStorage.setItem('ngShopifyCartId', cart.id);
             return {
               type: '[Product Detail Page] Add product success',
               cart: cart,
