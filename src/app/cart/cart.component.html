@@ -1,1 +1,13 @@
-<p>cart works!</p>
+<main class="cart-page">
+  <article class="cart-page-content">
+    <h1>Your Cart</h1>
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <app-cart-table [cartItems]="cartItems"></app-cart-table>
+      <app-cart-total></app-cart-total>
+    </div>
+    <ng-template #emptyCart>
+      <p class="cart-page-message">Your cart is empty, fill it up!</p>
+      <a routerLink="/" class="cart-page-button is-dark"> Back to Products </a>
+    </ng-template>
+  </article>
+</main>

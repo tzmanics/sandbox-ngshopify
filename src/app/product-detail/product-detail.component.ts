@@ -16,7 +16,7 @@ export class ProductDetailComponent implements OnInit {
   product!: Product;
   selectedProductId!: string;
   selectedQuantity: number = 1;
-  variants: any[] = [{ node: { priceV2: { amount: 1 } } }];
+  variants: any[] = [{ node: { priceV2: { amount: 0 } } }];
 
   constructor(
     private route: ActivatedRoute,
