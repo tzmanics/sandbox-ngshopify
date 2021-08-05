@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { getCart } from '../state/cart.actions';
 
 @Component({
   selector: 'app-cart',
@@ -6,8 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cartItems: any[] = [];
-  constructor() {}
+  cart$: Observable<any[]> = this.store.select((state) => state.cart);
 
-  ngOnInit(): void {}
+  constructor(private store: Store<{ cart: any[] }>) {}
+
+  ngOnInit(): void {
+    this.store.dispatch(getCart());
+  }
 }

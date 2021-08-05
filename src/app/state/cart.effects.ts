@@ -25,5 +25,21 @@ export class CartEffects {
     )
   );
 
+  getCart$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType('[Shopify API] Get cart'),
+      mergeMap(() =>
+        this.cartService.getCart().pipe(
+          map((cart) => {
+            return {
+              type: '[Shopify API] Get cart success',
+              cart: cart,
+            };
+          }),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
   constructor(private actions$: Actions, private cartService: CartService) {}
 }
