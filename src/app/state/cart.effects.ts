@@ -33,7 +33,7 @@ export class CartEffects {
           map((cart) => {
             return {
               type: '[Shopify API] Get cart success',
-              cart: cart,
+              cart: cart.cart,
             };
           }),
           catchError(() => EMPTY)

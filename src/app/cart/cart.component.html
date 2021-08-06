@@ -1,14 +1,12 @@
 <main class="cart-page">
   <article class="cart-page-content">
     <h1>Your Cart</h1>
-    <div *ngIf="cart$ | async as cartItems">
-      <!-- TODO: cartItems coming in as object instead of array -->
-      {{ cartItems | json }}
-      <!-- <div *ngIf="cartItems.cart.lines.edges > 0; else emptyCart"> -->
-      <app-cart-table [cartItems]="cartItems"></app-cart-table>
-      <app-cart-total></app-cart-total>
+    <div *ngIf="cart$ | async as cart">
+      <div *ngIf="cart.lines.edges.length > 0; else emptyCart">
+        <app-cart-table [cartItems]="cart.lines.edges"></app-cart-table>
+        <app-cart-total></app-cart-total>
+      </div>
     </div>
-    <!-- </div> -->
     <ng-template #emptyCart>
       <p class="cart-page-message">Your cart is empty, fill it up!</p>
       <a routerLink="/" class="cart-page-button is-dark"> Back to Products </a>

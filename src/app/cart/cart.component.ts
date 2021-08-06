@@ -10,8 +10,7 @@ import { getCart } from '../state/cart.actions';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cart$: Observable<any[]> = this.store.select((state) => state.cart);
-
+  cart$: Observable<any> = this.store.select((state) => state.cart);
   constructor(private store: Store<{ cart: any[] }>) {}
 
   ngOnInit(): void {
