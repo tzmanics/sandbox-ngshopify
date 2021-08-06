@@ -2,7 +2,7 @@
   <article class="cart-page-content">
     <h1>Your Cart</h1>
     <div *ngIf="cart$ | async as cart">
-      <div *ngIf="cart.lines.edges.length > 0; else emptyCart">
+      <div *ngIf="cart.lines && cart.lines.edges.length > 0; else emptyCart">
         <app-cart-table [cartItems]="cart.lines.edges"></app-cart-table>
         <section class="cart-total">
           <div class="cart-total-content">
