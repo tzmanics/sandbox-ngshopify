@@ -4,7 +4,28 @@
     <div *ngIf="cart$ | async as cart">
       <div *ngIf="cart.lines.edges.length > 0; else emptyCart">
         <app-cart-table [cartItems]="cart.lines.edges"></app-cart-table>
-        <app-cart-total></app-cart-total>
+        <section class="cart-total">
+          <div class="cart-total-content">
+            <div class="cart-total-column">
+              <p>
+                <strong>Subtotal:</strong>
+              </p>
+              <p>Shipping:</p>
+              <p>Tax:</p>
+              <p>Total:</p>
+            </div>
+            <div class="cart-total-column">
+              <p>
+                <strong>{{
+                  cart.estimatedCost.subtotalAmount.amount | currency
+                }}</strong>
+              </p>
+              <p>Free Shipping</p>
+              <p>{{ cart.estimatedCost.totalTaxAmount.amount | currency }}</p>
+              <p>{{ cart.estimatedCost.totalAmount.amount | currency }}</p>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
     <ng-template #emptyCart>
