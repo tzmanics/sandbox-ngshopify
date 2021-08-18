@@ -10,8 +10,12 @@
     <tr *ngFor="let item of cartItems" class="cart-table-row">
       <td class="cart-table-cell">
         <a routerLink="`/products/${item.node.handle}`">
-          {{ item.node.merchandise.product.title }} |
-          {{ item.node.merchandise.title }}</a
+          {{ item.node.merchandise.product.title }}
+          {{
+            item.node.merchandise.title === "Default Title"
+              ? ""
+              : " | " + item.node.merchandise.title
+          }}</a
         >
       </td>
       <td class="cart-table-cell">
