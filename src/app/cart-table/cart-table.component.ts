@@ -16,6 +16,6 @@ export class CartTableComponent implements OnInit {
   ngOnInit(): void {}
 
   removeFromCart(lineId: any) {
-    this.store.dispatch(removeProduct(lineId));
+    this.store.dispatch(removeProduct({ lineId }));
   }
 }

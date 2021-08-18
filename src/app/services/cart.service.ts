@@ -27,12 +27,12 @@ export class CartService {
     return addToCartResponse;
   }
 
-  removeFromCart(lineId: any) {
+  removeFromCart(action: any) {
     const shopifyRemoveCartResponse = this.http.post(
       '/.netlify/functions/remove-from-cart',
       {
         cartId: this.cartId,
-        lineId,
+        lineId: action.lineId,
       }
     );
     return shopifyRemoveCartResponse;
