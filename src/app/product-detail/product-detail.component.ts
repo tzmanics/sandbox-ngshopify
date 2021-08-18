@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import { Product } from '../models/Product';
 import { ProductListService } from '../services/product-list.service';
 import { addProduct } from '../state/cart.actions';
-import { productListReducer } from '../state/product-list.reducers';
 
 @Component({
   selector: 'app-product-detail',

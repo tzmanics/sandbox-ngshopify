@@ -25,6 +25,23 @@ export class CartEffects {
     )
   );
 
+  removeProduct$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType('[Cart Page] Remove product'),
+      mergeMap((action) =>
+        this.cartService.removeFromCart(action).pipe(
+          map((cart) => {
+            return {
+              type: '[Cart Page] Remove product success',
+              cart: cart,
+            };
+          }),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
   getCart$ = createEffect(() =>
     this.actions$.pipe(
       ofType('[Shopify API] Get cart'),

@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { removeProduct } from '../state/cart.actions';
 
 @Component({
   selector: 'app-cart-table',
@@ -8,11 +11,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CartTableComponent implements OnInit {
   @Input() cartItems: any[] = [];
 
-  constructor() {}
+  constructor(private store: Store<{ cart: any[] }>) {}
 
   ngOnInit(): void {}
 
-  removeFromCart(lineId: string) {
-    console.log(`Remove line item ${lineId}`);
+  removeFromCart(lineId: any) {
+    this.store.dispatch(removeProduct(lineId));
   }
 }
